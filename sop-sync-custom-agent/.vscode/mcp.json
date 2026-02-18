@@ -1,24 +1,47 @@
 {
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "atlassian_host",
+      "description": "Atlassian domain — no https:// (e.g. mycompany.atlassian.net)"
+    },
+    {
+      "type": "promptString",
+      "id": "atlassian_email",
+      "description": "Atlassian account email address"
+    },
+    {
+      "type": "promptString",
+      "id": "atlassian_token",
+      "description": "Atlassian API token — generate at https://id.atlassian.com/manage-profile/security/api-tokens",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "confluence_space_key",
+      "description": "Default Confluence space key for new pages (e.g. ENG, DOCS, TEAM)"
+    }
+  ],
   "servers": {
     "jira": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-jira"],
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
       "env": {
-        "JIRA_HOST": "${JIRA_HOST}",
-        "JIRA_EMAIL": "${JIRA_EMAIL}",
-        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
+        "JIRA_URL": "https://${input:atlassian_host}",
+        "JIRA_USERNAME": "${input:atlassian_email}",
+        "JIRA_API_TOKEN": "${input:atlassian_token}"
       }
     },
     "confluence": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-confluence"],
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
       "env": {
-        "CONFLUENCE_HOST": "${CONFLUENCE_HOST}",
-        "CONFLUENCE_EMAIL": "${CONFLUENCE_EMAIL}",
-        "CONFLUENCE_API_TOKEN": "${CONFLUENCE_API_TOKEN}",
-        "CONFLUENCE_SPACE_KEY": "${CONFLUENCE_SPACE_KEY}"
+        "CONFLUENCE_URL": "https://${input:atlassian_host}/wiki",
+        "CONFLUENCE_USERNAME": "${input:atlassian_email}",
+        "CONFLUENCE_API_TOKEN": "${input:atlassian_token}",
+        "CONFLUENCE_SPACE_KEY": "${input:confluence_space_key}"
       }
     }
   }
