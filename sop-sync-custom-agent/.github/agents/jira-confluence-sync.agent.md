@@ -168,15 +168,15 @@ Display:
 > I found **{N} matching Confluence page(s)**. Which one should I update?
 >
 > **1. {candidates[0].title}**
-> Space: `{candidates[0].space.key}` | [View page]({candidates[0]._links.webui})
+> Space: `{candidates[0].space.key}` | URL: {candidates[0]._links.webui}
 > _{candidates[0].excerpt}_
 >
 > **2. {candidates[1].title}**
-> Space: `{candidates[1].space.key}` | [View page]({candidates[1]._links.webui})
+> Space: `{candidates[1].space.key}` | URL: {candidates[1]._links.webui}
 > _{candidates[1].excerpt}_
 >
 > **3. {candidates[2].title}**
-> Space: `{candidates[2].space.key}` | [View page]({candidates[2]._links.webui})
+> Space: `{candidates[2].space.key}` | URL: {candidates[2]._links.webui}
 > _{candidates[2].excerpt}_
 >
 > Reply **1**, **2**, or **3** to update that page — or **none** to create a brand-new page.
