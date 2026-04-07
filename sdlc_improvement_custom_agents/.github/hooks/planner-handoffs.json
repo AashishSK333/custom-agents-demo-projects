@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "description": "Log Planner handoffs to other agents via runSubagent",
+        "type": "command",
+        "command": ".github/hooks/scripts/log-planner-handoff.sh",
+        "timeout": 5
+      }
+    ]
+  }
+}
